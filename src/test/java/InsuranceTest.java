@@ -36,10 +36,10 @@ public class InsuranceTest {
         wait.until(ExpectedConditions.elementToBeClickable(buyBtn));
         buyBtn.click();
 
-        //wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//input[contains(@name, 'content.policyHolder.dob')]"))));
-        //driver.findElement(By.name("content.policyHolder.dob")).click();
-        //WebElement inputBirthDate = driver.findElement(By.xpath("//input[contains(@name, 'content.policyHolder.dob')]"));
-        //inputBirthDate.sendKeys("01011985");
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//input[contains(@name, 'content.policyHolder.dob')]"))));
+        driver.findElement(By.name("content.policyHolder.dob")).click();
+        WebElement inputBirthDate = driver.findElement(By.xpath("//input[contains(@name, 'content.policyHolder.dob')]"));
+        inputBirthDate.sendKeys("01011985");
 
         driver.findElement(By.xpath("//*[contains(text(), 'Мужской')]")).click();
 
