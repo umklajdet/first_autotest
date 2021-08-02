@@ -56,8 +56,45 @@ public class AppFormPage extends BasePage {
     }
 
     // здесь будет заполнение полей
-
-    // здесь будет проверка заполнения полей
+    public void inputValues(String fieldName, String value){
+        switch (fieldName){
+            case "Фамилия застрахованного":
+                inputAndCheckValues(insuredSurname, value);
+                break;
+            case "Имя затрахованного":
+                inputAndCheckValues(insuredName, value);
+                break;
+            case "Дата рождения затрахованного":
+                inputAndCheckValues(insuredBirthDate, value);
+                break;
+            case "Фамилия страхователя":
+                inputAndCheckValues(personSurname, value);
+                break;
+            case "Имя страхователя":
+                inputAndCheckValues(personName, value);
+                break;
+            case "Отчество страхователя":
+                inputAndCheckValues(personMiddleName, value);
+                break;
+            case "Дата рождения страхователя":
+                inputAndCheckValues(personBirthDate, value);
+                break;
+            case "Серия паспорта":
+                inputAndCheckValues(passportSeries, value);
+                break;
+            case "Номер паспорта":
+                inputAndCheckValues(passportNumber, value);
+                break;
+            case "Дата выдачи":
+                inputAndCheckValues(passportDate, value);
+                break;
+            case "Кем выдан":
+                inputAndCheckValues(passportIssue, value);
+                break;
+            default:
+                throw new AssertionError("поле " + fieldName + " отсутствует на странице");
+        }
+    }
 
     public void sendAppForm(String name){
         mainForm.findElement(By.xpath("//*[@class = 'btn btn-primary page__btn']")).click();
