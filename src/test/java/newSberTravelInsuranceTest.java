@@ -13,6 +13,7 @@ public class newSberTravelInsuranceTest extends BaseTest {
     public void newTravelInsuranceTest(){
         driver.get(baseUrl);
         MainPage mainPage = new MainPage(driver);
+        mainPage.closeCookieBtn();
         mainPage.selectMenuItem("Страхование");
         mainPage.selectInsuranceItem("Путешествия");
 
