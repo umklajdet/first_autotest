@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,6 +51,19 @@ public class AppFormPage extends BasePage {
     @FindBy(id = "documentIssue")
     WebElement passportIssue;
 
+//    @FindBy(xpath = "//div[@class = 'alert-form alert-form-error']")
+//    WebElement errorAlert;
+
+    @FindBy(xpath = "//span[contains(@class, 'form-control_phone')]")
+    WebElement phone;
+
+    @FindBy(xpath = "//input[contains(@id, 'email')]//..")
+    WebElement email;
+
+    @FindBy(xpath = "//input[contains(@id, 'repeatEmail')]//..")
+    WebElement repeatEmail;
+
+
     public AppFormPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
@@ -61,10 +75,10 @@ public class AppFormPage extends BasePage {
             case "Фамилия застрахованного":
                 inputAndCheckValues(insuredSurname, value);
                 break;
-            case "Имя затрахованного":
+            case "Имя застрахованного":
                 inputAndCheckValues(insuredName, value);
                 break;
-            case "Дата рождения затрахованного":
+            case "Дата рождения застрахованного":
                 inputAndCheckValues(insuredBirthDate, value);
                 break;
             case "Фамилия страхователя":
@@ -96,7 +110,17 @@ public class AppFormPage extends BasePage {
         }
     }
 
-    public void sendAppForm(String name){
+    public void sendAppForm(){
         mainForm.findElement(By.xpath("//*[@class = 'btn btn-primary page__btn']")).click();
+    }
+
+    String error = "При заполнении данных произошла ошибка";
+    String notFilledMsg = "Поле не заполнено.";
+
+    public void checkErrorMessages(){
+        Assert.assertEquals(error, driver.findElement(By.xpath(".//div[@class = 'alert-form alert-form-error']")).getText());
+        Assert.assertEquals(notFilledMsg, phone.getText());
+        Assert.assertEquals(notFilledMsg, email.getText());
+        Assert.assertEquals(notFilledMsg, repeatEmail.getText());
     }
 }

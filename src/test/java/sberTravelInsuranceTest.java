@@ -1,7 +1,4 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +27,7 @@ public class sberTravelInsuranceTest {
         driver.get(baseUrl);
     }
 
+    @Ignore
     @Test
     public void travelInsuranceTest() {
         driver.findElement(By.xpath("//li[contains(@class, 'kitt-top-menu__item kitt-top-menu__item_first')]//a[contains(text(), 'Страхование')]")).click();

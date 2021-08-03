@@ -20,7 +20,7 @@ public class ChoosePricePage extends BasePage {
         mainForm.findElement(By.xpath(".//div//h3[contains(text(), '"+name+"')]")).click();
     }
 
-    public void goToAppForm(String name){
+    public void goToAppForm(){
         mainForm.findElement(By.xpath(".//*[@class ='btn btn-primary btn-large']")).click();
     }
 }
